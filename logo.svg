@@ -13,10 +13,23 @@
       <feGaussianBlur stdDeviation="2.4" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <style>
+      svg { animation: clsFloaty 6s ease-in-out infinite; }
+      @keyframes clsFloaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+      .l-orbit, .l-orbdot { transform-origin: 50% 50%; transform-box: view-box; animation: clsSpin 16s linear infinite; }
+      @keyframes clsSpin { to { transform: rotate(360deg); } }
+      .l-hex { transform-origin: 50% 50%; transform-box: view-box; animation: clsHex 3.4s ease-in-out infinite; }
+      @keyframes clsHex { 0%, 100% { opacity: .78; } 50% { opacity: 1; } }
+      .l-core { transform-origin: 50% 50%; transform-box: view-box; animation: clsBreath 2.6s ease-in-out infinite; }
+      @keyframes clsBreath { 0%, 100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.06); opacity: 1; } }
+      .l-pulse { stroke-dasharray: 26 40; animation: clsPulse 2.2s linear infinite; }
+      @keyframes clsPulse { from { stroke-dashoffset: 66; } to { stroke-dashoffset: 0; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
   </defs>
-  <circle cx="36" cy="36" r="33" fill="none" stroke="url(#lg)" stroke-width="1.1" stroke-dasharray="3 8" opacity=".5"/>
-  <circle cx="36" cy="3" r="2.4" fill="#B48CFF" opacity=".95"/>
-  <path d="M36 7 L59 20.5 V49.5 L36 63 L13 49.5 V20.5 Z" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linejoin="round" filter="url(#fglow)"/>
-  <path d="M36 19.5 L47.5 36 L36 52.5 L24.5 36 Z" fill="url(#lg2)" opacity=".95" filter="url(#fglow)"/>
-  <path d="M27 36 h5.2 l2.6 -5.6 l3 11.2 l2.6 -5.6 h4.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity=".96"/>
+  <circle class="l-orbit" cx="36" cy="36" r="33" fill="none" stroke="url(#lg)" stroke-width="1.1" stroke-dasharray="3 8" opacity=".5"/>
+  <circle class="l-orbdot" cx="36" cy="3" r="2.4" fill="#B48CFF" opacity=".95"/>
+  <path class="l-hex" d="M36 7 L59 20.5 V49.5 L36 63 L13 49.5 V20.5 Z" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linejoin="round" filter="url(#fglow)"/>
+  <path class="l-core" d="M36 19.5 L47.5 36 L36 52.5 L24.5 36 Z" fill="url(#lg2)" opacity=".95" filter="url(#fglow)"/>
+  <path class="l-pulse" d="M27 36 h5.2 l2.6 -5.6 l3 11.2 l2.6 -5.6 h4.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity=".96"/>
 </svg>
